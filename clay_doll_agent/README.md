@@ -25,7 +25,7 @@ curl -X POST http://localhost:8000/apps/clay_doll_generator/users/u_123/sessions
 ### Request to Agent
 
 ```bash
-curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{"appName": "clay_doll_generator","userId": "u_123","sessionId": "s_123","newMessage": {"role": "user","parts": [{"text": "A beautiful clay art piece depicting a serene landscape"}]}}'
+curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{"appName": "clay_doll_generator","userId": "u_123","sessionId": "s_123","newMessage": {"role": "user","parts": [{"text": "A monkey eating banana on chair"}]}}'
 ```
 
 ### Example Agent Output
@@ -38,7 +38,7 @@ curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{
       "parts": [
         {
           "inlineData": {
-            "data": "iVBORw0KGgoAAAANSU",
+            "data": "iVBORw0KGgoAAAANSU...",
             "mimeType": "image/png"
           }
         }

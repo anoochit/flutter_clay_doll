@@ -103,8 +103,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
       if (response.statusCode == HttpStatus.ok) {
         final data = json.decode(response.body);
+        print(response.body);
         final base64Image =
-            data[0]["content"]["parts"][0]["inlineData"]["data"];
+            data[0]["content"]["parts"][1]["inlineData"]["data"];
         final imageBytes = base64Decode(base64Image);
 
         final tempDir = await getTemporaryDirectory();
