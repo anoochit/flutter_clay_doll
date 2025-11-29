@@ -2,22 +2,47 @@
 
 ## Project Overview
 
-The goal of this project was to create a FastAPI application that serves an agent capable of generating images of clay dolls based on user descriptions. The project involved setting up the FastAPI server, configuring the agent with a specific model and instructions, and iteratively refining the agent's configuration based on user feedback.
+The Clay Doll Agent is a FastAPI application designed to generate images of clay dolls based on user descriptions. The agent leverages the `gemini-2.5-flash-image` model to create high-quality images with a distinct handmade clay aesthetic.
 
-## What Went Well
+## Persona
 
-- **FastAPI Application Setup**: A functional FastAPI application was successfully created and configured to run with `uvicorn`.
-- **Agent Configuration**: The agent was successfully configured with a model, description, and detailed instructions for generating images.
-- **Iterative Development**: The agent's configuration was updated multiple times based on the user's evolving requirements, demonstrating a flexible and iterative development process.
-- **Problem Solving**: When the user provided a potentially invalid model name (`nano-banana`), the issue was identified and a valid model was suggested and implemented.
+This application is designed for creators, artists, and developers who need a tool to quickly generate stylized images for their projects. The target user is someone who is familiar with using APIs and wants to integrate this image generation capability into their own applications or workflows.
 
-## What Could Be Improved
+## User Story
 
-- **Model Validation**: The initial use of an invalid model name (`nano-banana`) could have been prevented if there was a mechanism to validate model names or a tool to list available models. This would have saved a development cycle.
-- **Clarity of Initial Requests**: Some initial user requests, such as "fix agent", were ambiguous and required clarification or assumptions to proceed. More specific requests would have led to a more direct path to the solution.
+As a developer, I want to be able to send a text description to an API and receive an image of a clay doll that matches the description, so that I can use the image in my application.
 
-## Action Items & Learnings
+## High-level Architecture
 
-- **Model Availability**: For future projects, it would be beneficial to have access to a list of available models to avoid using invalid model names.
-- **Clarify Ambiguity**: It is important to ask for clarification when faced with ambiguous requests to ensure the user's intent is fully understood before proceeding.
-- **Agent Output**: The user specified a desired output format for images (`inlineData`). This is a valuable piece of information that should be documented and considered in the agent's implementation.
+The application is a single-container FastAPI service. The core logic is encapsulated in a `root_agent` that is configured in `clay_doll_generator/agent.py`. The FastAPI application is created using the `google-adk` library, which provides a convenient way to serve the agent.
+
+## Tech Stack and Dependencies
+
+- **Python 3.13**
+- **FastAPI**: The web framework used to create the API.
+- **Uvicorn**: The ASGI server used to run the FastAPI application.
+- **google-adk**: The library used to create and serve the agent.
+
+## Core Logic
+
+The core logic of the application is in the `clay_doll_generator/agent.py` file. This file defines the `root_agent` and its configuration. The agent's instruction is a detailed prompt that guides the `gemini-2.5-flash-image` model to generate images in the desired clay doll style.
+
+## Running the App
+
+To run the application, you can use the following command:
+
+```bash
+python main.py
+```
+
+This will start a `uvicorn` server on `localhost:8000`.
+
+## Testing and Validation
+
+Testing can be done by sending requests to the API using a tool like `curl` or Postman. The `README.md` file provides example `curl` commands for creating a session and making a request to the agent.
+
+## Future Improvements
+
+- **Add more style options**: The agent could be extended to support different styles of clay dolls.
+- **Improve the prompt**: The agent's instruction could be further refined to generate even better images.
+- **Add a web interface**: A simple web interface could be added to make the agent easier to use for non-developers.
