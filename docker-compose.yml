@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  agent:
+    build:
+      context: ./clay_doll_agent
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./clay_doll_agent:/app
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+
+  app:
+    build:
+      context: ./clay_doll_app
+    ports:
+      - "8080:80"
