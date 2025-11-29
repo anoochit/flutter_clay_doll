@@ -25,7 +25,7 @@ curl -X POST http://localhost:8000/apps/clay_doll_generator/users/u_123/sessions
 ### Request to Agent
 
 ```bash
-curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{"appName": "clay_doll_generator","userId": "u_123","sessionId": "s_123","newMessage": {"role": "user","parts": [{"text": "A monkey eating banana on chair"}]}}'
+curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{"appName": "clay_doll_generator","userId": "u_123","sessionId": "s_123","newMessage": {"role": "user","parts": [{"text": "A monkey eating banana"}]}}'
 ```
 
 ### Example Agent Output
@@ -36,6 +36,9 @@ curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{
     "modelVersion": "gemini-2.5-flash-image",
     "content": {
       "parts": [
+          {
+          "text": "A cute clay doll monkey with soft, hand-molded clay texture and subtle thumbprint marks, a matte finish, sits on a miniature clay chair. The monkey has bright orange fur and black bead eyes, a playful expression on its face as its tiny clay fingers hold a clay banana, taking a bite. The chair is also made of clay, with a slightly textured, matte surface. The background is a simple, blurred miniature set with clay details. The scene is brightly lit with studio lighting, and a shallow depth of field keeps the monkey and banana in sharp focus. "
+        },
         {
           "inlineData": {
             "data": "iVBORw0KGgoAAAANSU...",

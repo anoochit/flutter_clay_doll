@@ -161,12 +161,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _isLoading ? null : _generateImage,
-              child: _isLoading
-                  ? const CircularProgressIndicator()
-                  : const Text('Generate Image'),
-            ),
+            (_isLoading)
+                ? CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: _isLoading ? null : _generateImage,
+                    child: Text('Generate Image'),
+                  ),
             const SizedBox(height: 16.0),
             Expanded(
               child: _imagePath != null
